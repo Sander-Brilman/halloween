@@ -30,8 +30,6 @@ function start(currentTime_sec) {
 
     audio.play();
 
-    $('body').append($('<p class="text"></p>'))
-
     executeTimeListener(Math.round(audio.currentTime * 1000 / 500) * 500)
     timer = setInterval(function() {
         console.log(audio.currentTime * 1000);
@@ -50,7 +48,7 @@ function stop() {
 
 $(document).ready(function() {
     $('#start').click(function() {
-        start(49);
+        start(0);
     });
 
     $('#stop').click(function() {
