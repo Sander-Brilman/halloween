@@ -1,0 +1,186 @@
+@keyframes shake {
+    0%   { transform: translate( 1px,  1px) rotate( 0deg); }
+    10%  { transform: translate(-1px, -2px) rotate(-1deg); }
+    20%  { transform: translate(-3px,  0px) rotate( 1deg); }
+    30%  { transform: translate( 3px,  2px) rotate( 0deg); }
+    40%  { transform: translate( 1px, -1px) rotate( 1deg); }
+    50%  { transform: translate(-1px,  2px) rotate(-1deg); }
+    60%  { transform: translate(-3px,  1px) rotate( 0deg); }
+    70%  { transform: translate( 3px,  1px) rotate(-1deg); }
+    80%  { transform: translate(-1px, -1px) rotate( 1deg); }
+    90%  { transform: translate( 1px,  2px) rotate( 0deg); }
+    100% { transform: translate( 1px, -2px) rotate(-1deg); }
+}
+
+@keyframes spin {
+    0%   { transform: rotate( 0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes vaporize {
+    0%   { filter: blur(0px); }
+    70%  { opacity: 1; }
+    100%   { filter: blur(100px); opacity: 0; }
+}
+
+@keyframes sleep-z {
+    0%   { left: 0px; top: -20px; }
+    10%   { left: -10px; }
+    20%   { left: -20px; }
+
+    50%   { left: -10px; }
+    60%   { left: -20px; opacity: 1; }
+
+    90%   { left: -10px; }
+    100%   { left: -20px; top: -50px; opacity: 0; }
+}
+
+* {
+    transition: all 0.2s;
+}
+
+html, body {
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: white;
+}
+
+.abs {
+    position: absolute;
+}
+
+.lg-skull {
+    font-size: 50px;
+}
+
+#stop {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+}
+
+.text {
+    font-size: 40px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.text > span {
+    margin-right: 10px;
+}
+
+.floating-image {
+    position: absolute;
+    max-width: 80vw;
+    max-height: 35vh;
+}
+
+.floating-image.top-left {
+    left: 25px;
+    top: 25px;
+}
+
+.shake {
+    display: inline-block;
+    animation: shake 0.5s linear 0s infinite normal forwards;
+}
+
+.spin {
+    display: inline-block;
+    animation: spin 0.3s linear 0s infinite normal forwards;
+}
+
+.red-shadow {
+    text-shadow: red 3px 3px;
+}
+
+.vaporize {
+    display: inline-block;
+    animation: vaporize 0.3s linear 0s 1 normal forwards;
+}
+
+.dialog {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.speaker {
+    display: flex;
+    flex-direction: column;
+    /* margin-right: 50px; */
+}
+
+.pumpkin > .source {
+    color: orange;
+}
+
+.skull > .source {
+    color: rgb(255, 255, 255);
+}
+
+.source {
+    font-size: 80px;
+}
+
+.text-balloon {
+    background: #fff;
+    width: 300px;
+    height: 80px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    position: relative;
+    color: black;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 5px 10px;
+}
+
+.text-balloon > * {
+    z-index: 1;
+    margin-right: 5px;
+    font-size: 22px;
+}
+
+.text-balloon::before {
+    content: '';
+    background: #fff;
+    position: absolute;
+    bottom: -13px;
+    left: 15%;
+    width: 25px;
+    height: 25px;
+    rotate: 45deg;
+}
+
+.invisible {
+    transition: none;
+    opacity: 0;
+}
+
+.ghost-text {
+    opacity: 0.6;
+}
+
+.purple {
+    color: #f0f;
+
+}
+
+.sleep-z {
+    width: 0px;
+    height: 0px;
+    position: relative;
+    animation: sleep-z 0.7s linear 0s 1 forwards normal;
+}
