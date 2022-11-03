@@ -30,6 +30,8 @@ function start(currentTime_sec) {
 
     audio.play();
 
+    $('body').append($('<p class="text"></p>'))
+
     executeTimeListener(Math.round(audio.currentTime * 1000 / 500) * 500)
     timer = setInterval(function() {
         console.log(audio.currentTime * 1000);
@@ -48,7 +50,7 @@ function stop() {
 
 $(document).ready(function() {
     $('#start').click(function() {
-        start(0);
+        start(49);
     });
 
     $('#stop').click(function() {
@@ -512,23 +514,6 @@ addTimeListener(99500, () => {
             textPrintItem(200, span('Sticks', 'text-warning')),
             textPrintItem(500, span('and')),
             textPrintItem(900, span('stones', 'text-warning')),
-            textPrintItem(1500, span('will')),
-            textPrintItem(1900, span('break')),
-            textPrintItem(2300, span('your')),
-            textPrintItem(2600, span('bones', 'text-danger')),
-        ]
-    )
-})
-
-addTimeListener(99500, () => {
-    $('body > p').html('');
-
-    printText(
-        $('body > .text'), 
-        [
-            textPrintItem(250, span('Sticks', 'text-warning')),
-            textPrintItem(700, span('and')),
-            textPrintItem(1100, span('stones', 'text-warning')),
             textPrintItem(1500, span('will')),
             textPrintItem(1900, span('break')),
             textPrintItem(2300, span('your')),
