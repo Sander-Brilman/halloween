@@ -46,7 +46,7 @@ function stop() {
 
 $(document).ready(function() {
     $('#start').click(function() {
-        start(93);
+        start(0);
     });
 
     $('#stop').click(function() {
