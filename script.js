@@ -30,11 +30,9 @@ function start(currentTime_sec) {
 
     audio.play();
 
-    executeTimeListener(Math.round(audio.currentTime * 1000 / 500) * 500)
-    timer = setInterval(function() {
-        console.log(audio.currentTime * 1000);
-        executeTimeListener(Math.round(audio.currentTime * 1000 / 500) * 500)
-    }, 500);
+    $('body').append($('<p class="text"></p>'))
+
+    executeTimeListener(Math.round(audio.currentTime * 1000 / 500) * 500);
 
     $('.start').remove();
     $('#stop').show();
@@ -48,7 +46,7 @@ function stop() {
 
 $(document).ready(function() {
     $('#start').click(function() {
-        start(0);
+        start(36);
     });
 
     $('#stop').click(function() {
@@ -63,6 +61,13 @@ $(document).ready(function() {
     audio.onpause = function() {
         clearInterval(timer);
     };
+
+    audio.onplay = function() {
+        timer = setInterval(function() {
+            console.log(audio.currentTime * 1000);
+            executeTimeListener(Math.round(audio.currentTime * 1000 / 500) * 500)
+        }, 500);
+    }
 })
 
 // 
@@ -226,9 +231,9 @@ addTimeListener(37500, () => {
             textPrintItem(200, span('We\'re')),
             textPrintItem(600, span('so')),
             textPrintItem(1000, span('sorry')),
-            textPrintItem(1400, span('skeletons', 'text-danger')),
-            textPrintItem(2500, span('you\'re')),
-            textPrintItem(3000, span('so')),
+            textPrintItem(1700, span('skeletons', 'text-danger')),
+            textPrintItem(3000, span('you\'re')),
+            textPrintItem(3300, span('so')),
             textPrintItem(3600, span('misunderstood', 'text-warning')),
         ]
     )
@@ -240,29 +245,29 @@ addTimeListener(43500, () => {
     printText(
         $('.pumpkin > .text-balloon'), 
         [
-            textPrintItem(200, span('You')),
-            textPrintItem(700, span('only')),
-            textPrintItem(1000, span('want')),
-            textPrintItem(1400, span('to')),
-            textPrintItem(2000, span('socialize', 'text-warning'), () => {
+            textPrintItem(000, span('You')),
+            textPrintItem(500, span('only')),
+            textPrintItem(800, span('want')),
+            textPrintItem(1200, span('to')),
+            textPrintItem(1800, span('socialize', 'text-warning'), () => {
                 loadImage('./images/skeletons-drinking-beer.jpg', 4000);
             }),
         ]
     )
 })
 
-addTimeListener(46000, () => {
+addTimeListener(46500, () => {
     $('.pumpkin > .text-balloon').addClass('invisible');
 
     printText(
         $('.skull > .text-balloon'), 
         [
-            textPrintItem(200, span('But')),
-            textPrintItem(700, span('I')),
-            textPrintItem(1000, span('don\'t')),
-            textPrintItem(1400, span('think')),
-            textPrintItem(2000, span('we')),
-            textPrintItem(2400, span('should')),
+            textPrintItem(000, span('But')),
+            textPrintItem(500, span('I')),
+            textPrintItem(800, span('don\'t')),
+            textPrintItem(1200, span('think')),
+            textPrintItem(1800, span('we')),
+            textPrintItem(2200, span('should')),
         ]
     )
 })
@@ -290,8 +295,10 @@ addTimeListener(52500, () => {
         [
             textPrintItem(200, span('Shout')),
             textPrintItem(600, span('startling', 'text-warning')),
-            textPrintItem(1000, span('shrilly', 'text-danger')),
-            textPrintItem(1600, span('screams')),
+            textPrintItem(1000, span('shrilly')),
+            textPrintItem(2200, span('screams', 'text-danger'), element => {
+                loadImage('./images/screaming_skeleton.jpg', 1000)
+            }),
         ]
     )
 })
@@ -513,7 +520,14 @@ addTimeListener(99500, () => {
             textPrintItem(500, span('and')),
             textPrintItem(900, span('stones', 'text-warning')),
             textPrintItem(1500, span('will')),
-            textPrintItem(1900, span('break')),
+            textPrintItem(1900, span('break'), element => {
+                setTimeout(() => {
+                    element.html(`
+                    <span class="break-left">br</span>
+                    <span class="break-right">eak</span>
+                    `);
+                }, 100)
+            }),
             textPrintItem(2300, span('your')),
             textPrintItem(2600, span('bones', 'text-danger')),
         ]
@@ -553,14 +567,17 @@ addTimeListener(109000, () => {
             textPrintItem(500, span('wake')),
             textPrintItem(1000, span('you')),
             textPrintItem(1700, span('with')),
-            textPrintItem(2300, span('a')),
-            textPrintItem(3000, span('boo!', 'text-danger'), element => {
-                setTimeout(() => {
-                    element.addClass('spin', 500);
-                }, 500)
-            }),
+            textPrintItem(2500, span('a')),
         ]
     )
+
+    setTimeout(() => {
+        clearScreen();
+        $('body').append($('<h1 class="text-danger boo">BOO!</h1>'))
+        setTimeout(() => {
+            $('h1').addClass('spin', 500);
+        }, 500)
+    }, 3500)
 })
 
 addTimeListener(114000, () => {
@@ -699,6 +716,9 @@ function sleepEffect(targetJqueryElement, duration) {
         setInterval(() => {
             let z = $('<b class="sleep-z text-info">z</b>');
             targetJqueryElement.append(z);
+            setTimeout(() => {
+                z.remove();
+            }, 800)
         }, 1000),
         duration
     )
