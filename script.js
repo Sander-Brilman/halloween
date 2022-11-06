@@ -30,7 +30,7 @@ function start(currentTime_sec) {
 
     audio.play();
 
-    // $('body').append($('<p class="text"></p>'))
+    $('body').append($('<p class="text"></p>'))
 
     executeTimeListener(Math.round(audio.currentTime * 1000 / 500) * 500);
 
@@ -46,7 +46,7 @@ function stop() {
 
 $(document).ready(function() {
     $('#start').click(function() {
-        start(0);
+        start(93);
     });
 
     $('#stop').click(function() {
@@ -403,24 +403,27 @@ addTimeListener(81000, () => {
             textPrintItem(1200, span('seem')),
             textPrintItem(1600, span('so')),
             textPrintItem(2000, span('unsafe')),
-
             textPrintItem(3000, span('it\'s')),
-            textPrintItem(3450, span('semi-', 'm-0 purple'), element => {
+            textPrintItem(3450, span('semi-', 'm-0 purple huge-text'), element => {
                 tempClass(element, 'shake', 450)
             }),
-            textPrintItem(3750, span('serious', 'm-0 purple'), element => {
+            textPrintItem(3750, span('serious', 'm-0 purple huge-text'), element => {
                 element.addClass('shake');
             }),
         ]
     )
+
+    setTimeout(() => {
+        $('body > p').html('');
+    }, 3400)
 })
 
-addTimeListener(87000, () => {
+addTimeListener(87500, () => {
     $('body > p').html('');
 
     let lettersPrintItems = [];
     let letters = 'Spooky scary skeletons'.split('');
-    let timeout = 0;
+    let timeout = 000;
     let isOrange = false;
 
     letters.forEach(letter => {
@@ -464,12 +467,9 @@ addTimeListener(93000, () => {
             textPrintItem(250, span('smile', 'text-warning')),
             textPrintItem(1100, span('and')),
             textPrintItem(1400, span('scrabble')),
-            textPrintItem(1700, span('s', 'text-warning')),
-            textPrintItem(1800, span('l', 'text-warning')),
-            textPrintItem(1900, span('o', 'text-warning')),
-            textPrintItem(2000, span('w', 'text-warning')),
-            textPrintItem(2100, span('l', 'text-warning')),
-            textPrintItem(2200, span('y', 'text-warning')),
+            textPrintItem(1700, span('slowly', 'text-warning from-top'), element => {
+                
+            }),
             textPrintItem(2600, span('by')),
         ]
     )

@@ -45,6 +45,11 @@
     100% { bottom: -10px; rotate: 30deg; }
 }
 
+@keyframes from-top {
+    0%   { top: -20px; }
+    100% { top: 0px; }
+}
+
 * {
     transition: all 0.2s;
 }
@@ -195,6 +200,7 @@ html, body {
     animation: sleep-z 0.7s linear 0s 1 forwards normal;
 }
 
+.huge-text,
 .boo {
     font-size: 100px;
 }
@@ -206,10 +212,15 @@ html, body {
 }
 
 .break-left {
-    animation: break-left 0.3s linear 0s 1 forwards normal;
+    animation: break-left 0.2s linear 0s 1 forwards normal;
 }
 
 .break-right {
-    animation: break-right 0.3s linear 0s 1 forwards normal;
+    animation: break-right 0.2s linear 0s 1 forwards normal;
     
+}
+
+.from-top {
+    position: relative;
+    animation: from-top 0.75s linear 0s 1 forwards normal;
 }
