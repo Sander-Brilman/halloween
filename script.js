@@ -204,7 +204,7 @@ addTimeListener(34000, () => {
             textPrintItem(700, span('hear')),
             textPrintItem(1000, span('these')),
             textPrintItem(1300, span('zombies', 'text-success'), () => {
-                loadImage('./images/zombie.png', 2000)
+                loadImage('./images/zombie.png', 3000)
             }),
             textPrintItem(1600, span('shriek'), () => {
                 $('img').addClass('spin');
@@ -297,7 +297,7 @@ addTimeListener(52500, () => {
             textPrintItem(600, span('startling', 'text-warning')),
             textPrintItem(1000, span('shrilly')),
             textPrintItem(2200, span('screams', 'text-danger'), element => {
-                loadImage('./images/screaming_skeleton.jpg', 1000)
+                loadImage('./images/screaming_skeleton.jpg', 1100)
             }),
         ]
     )
@@ -447,8 +447,8 @@ addTimeListener(90000, () => {
         $('body > .text'), 
         [
             textPrintItem(0, span('Are')),
-            textPrintItem(250, span('silly', 'text-warning'), element => {
-                loadImage('./images/skeleton-dancing.gif', 900);
+            textPrintItem(250, span('silly', 'text-warning'),  element => {
+                loadImage('./images/skeleton-dancing.gif', 1300);
             }),
             textPrintItem(1100, span('all')),
             textPrintItem(1400, span('the')),
