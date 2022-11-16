@@ -11,4 +11,8 @@ For this project i used:
 
 <br><br>
 
+The project is hosted on my own website:
+https://www.sanderbrilman.nl/halloween
+<br><br>
+
 You can use the source code in any way you like.
